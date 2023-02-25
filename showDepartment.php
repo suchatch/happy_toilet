@@ -5,7 +5,7 @@ include_once './clsDepartment.php';
 
 $response = array();
 
-$sql = "SELECT DM_DepartmentID,DM_DepartmentName,BU_BuildingID FROM `tb_department`";
+$sql = "SELECT `DM_DepartmentID`,`DM_DepartmentName`,`BU_BuildingID` FROM `tb_department`";
 
 if ($stmt = $mysqli_asset->prepare($sql)) {
 //  $stmt->bind_param('s', $StaffID);

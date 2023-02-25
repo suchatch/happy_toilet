@@ -62,11 +62,11 @@ sec_session_start();
                                         <tbody>
                                             <?php
                                             $PM_ProductMasterID = $_GET['PM_ProductMasterID'];
-                                            $sql = "SELECT PR_Barcode,PR_SerialNumber,PR_IMEI,BR_BranchCode,BU_BuildingID,DM_DepartmantID,FL_FloorID,PR_RoomID,DM_DamageID,PR_Qty FROM `tb_productdetail` where PM_ProductMasterID = ? ";
+                                            $sql = "SELECT PR_Barcode,PR_SerialNumber,PR_IMEI,BR_BranchCode,BU_BuildingID,DM_DepartmentID,FL_FloorID,PR_RoomID,DM_DamageID,PR_Qty FROM `tb_productdetail` where PM_ProductMasterID = ? ";
                                             if ($stmt = $mysqli_asset->prepare($sql)) {
                                                 $stmt->bind_param('s', $PM_ProductMasterID);
                                                 $stmt->execute();
-                                                $stmt->bind_result($PR_Barcode,$PR_SerialNumber,$PR_IMEI,$BR_BranchCode,$BU_BuildingID,$DM_DepartmantID,$FL_FloorID,$PR_RoomID,$DM_DamageID,$PR_Qty);
+                                                $stmt->bind_result($PR_Barcode,$PR_SerialNumber,$PR_IMEI,$BR_BranchCode,$BU_BuildingID,$DM_DepartmentID,$FL_FloorID,$PR_RoomID,$DM_DamageID,$PR_Qty);
                                             }
 
 
@@ -79,7 +79,7 @@ sec_session_start();
                                                     <td><?=$PR_IMEI;?></td>
                                                     <td><?=$BR_BranchCode;?></td>
                                                     <td><?=$BU_BuildingID;?></td>
-                                                    <td><?=$DM_DepartmantID;?></td>
+                                                    <td><?=$DM_DepartmentID;?></td>
                                                     <td><?=$FL_FloorID;?></td>
                                                     <td><?=$PR_RoomID;?></td>
                                                     <td><?=$DM_DamageID;?></td>

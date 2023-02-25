@@ -24,8 +24,8 @@
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        
-         <ul class="sidebar-menu" data-widget="tree">
+
+        <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
 
             <li class="treeview">
@@ -42,7 +42,7 @@
                 </ul>
             </li>
         </ul>
-        
+
         <ul class="sidebar-menu" data-widget="tree">
 
             <li class="treeview">
@@ -53,13 +53,15 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="manage_room.php"><i class="fa fa-circle-o"></i> Manage Room</a></li>
+                    <li><a href="manage_department.php"><i class="fa fa-circle-o"></i> Manage Department</a></li>
                     <li><a href="manage_staff.php"><i class="fa fa-circle-o"></i> Manage Staff</a></li>
+                    <li><a href="manage_room.php"><i class="fa fa-circle-o"></i> Manage Room</a></li>
+                    
                 </ul>
             </li>
         </ul>
-      
-        
+
+
         <ul class="sidebar-menu" data-widget="tree">
             <li class="treeview">
                 <a href="#">
@@ -71,8 +73,8 @@
                 <ul class="treeview-menu">
                     <li><a href="graphReport.php"><i class="fa fa-circle-o"></i> Chart Summary</a></li>
                     <li><a href="TableSummaryVoteIssue.php"><i class="fa fa-circle-o"></i> Table Summary</a></li>
-                    
-                    
+
+
                     <!--<li><a href="report_diff.php"><i class="fa fa-circle-o"></i> Table Report</a></li>-->
                 </ul>
             </li>

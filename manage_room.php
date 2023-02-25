@@ -4,11 +4,12 @@ include_once './functions.php';
 sec_session_start();
 if (login_check() == true) {
 ?>
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
     <?php
     include_once './structure_head.php';
     ?>
+
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
 
@@ -38,9 +39,9 @@ if (login_check() == true) {
                             <div class="box">
                                 <div class="box-header">
                                     <h3 class="box-title">Room</h3>
-                                     
+
                                 </div>
-                              
+
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -49,28 +50,31 @@ if (login_check() == true) {
                                                 <th>พนักงานผู้ดูแลห้อง</th>
                                                 <th>ชื่อห้อง</th>
                                                 <th>รหัสพนักงานผู้ดูแล</th>
+                                                <th>แผนก</th>
+
                                                 <th> <a href="manage_room_add.php"><span class="label label-success">เพิ่มห้อง</span></a></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $sql = "SELECT `tb_room`.RM_RoomID,`tb_room`.RM_RoomName,`tb_room`.ST_StaffID,`tb_staff`.ST_Picture FROM `tb_room` left join `tb_staff` on `tb_room`.ST_StaffID = `tb_staff`.ST_StaffID";
+                                            $sql = "SELECT `tb_room`.RM_RoomID,`tb_room`.RM_RoomName,`tb_department`.`DM_DepartmentName`,`tb_room`.ST_StaffID,`tb_staff`.ST_Picture FROM (`tb_room` left join `tb_staff` on `tb_room`.ST_StaffID = `tb_staff`.ST_StaffID) left join `tb_department` on `tb_room`.`DM_DepartmentID` = `tb_department`.`DM_DepartmentID` ";
                                             if ($stmt = $mysqli_asset->prepare($sql)) {
-//            $stmt->bind_param('s', $StaffID);
+                                                //            $stmt->bind_param('s', $StaffID);
                                                 $stmt->execute();
-                                                $stmt->bind_result($RM_RoomID,$RM_RoomName, $ST_StaffID,$ST_Picture);
+                                                $stmt->bind_result($RM_RoomID, $RM_RoomName, $DM_DepartmentName, $ST_StaffID, $ST_Picture);
                                             }
 
 
                                             while ($stmt->fetch()) {
-                                                ?>
+                                            ?>
                                                 <tr>
-                                                    <td width="150px"><img src="dist/img/<?=AssetPicture;?>/isuzu/<?=$ST_Picture;?>" width="100px"  alt="User Image"></td>
-                                                    <td><?=$RM_RoomName;?></td>
-                                                    <td><?=$ST_StaffID;?></td>
-                                                    <td><a href="manage_room_edit.php?RM_RoomID=<?=$RM_RoomID;?>"><span class="label label-warning">แก้ไข</span><a/> </td>
+                                                    <td width="150px"><img src="dist/img/<?= AssetPicture; ?>/isuzu/<?= $ST_Picture; ?>" width="100px" alt="User Image"></td>
+                                                    <td><?= $RM_RoomName; ?></td>
+                                                    <td><?= $ST_StaffID; ?></td>
+                                                    <td><?= $DM_DepartmentName; ?> </td>
+                                                    <td><a href="manage_room_edit.php?RM_RoomID=<?= $RM_RoomID; ?>"><span class="label label-warning">แก้ไข</span></a> </td>
                                                 </tr>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </tbody>
@@ -78,7 +82,9 @@ if (login_check() == true) {
                                             <tr>
                                                 <th>พนักงานผู้ดูแลห้อง</th>
                                                 <th>ชื่อห้อง</th>
-                                                <th>แก้ไข</th>
+                                                <th>รหัสพนักงานผู้ดูแล</th>
+                                                <th>แผนก</th>
+                                                <th></th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -314,7 +320,7 @@ if (login_check() == true) {
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-            $(function () {
+            $(function() {
                 $('#example1').DataTable()
                 $('#example2').DataTable({
                     'paging': true,
@@ -327,11 +333,14 @@ if (login_check() == true) {
             })
         </script>
     </body>
-</html>
-<?php 
-}else {
-    ?>
-    <script>window.location.href = 'login.php';</script>
-    <?php
+
+    </html>
+<?php
+} else {
+?>
+    <script>
+        window.location.href = 'login.php';
+    </script>
+<?php
 }
 ?>

@@ -7,13 +7,13 @@
  */
 
 //
-define("DBHost","163.44.198.60");
-define("DBUser","cp031045");
+define("DBHost","localhost");
+define("DBUser","tong");
 
-define("DBPasswd","pcsias2019");         //For Server PCS
+define("DBPasswd","isms2017");         //For Server PCS
 //define("DBPasswd","1234");                  //For Test
 
-define("DBName","cp031045_pcs_ias");
+define("DBName","happytoilet_demo");
 define("CAN_REGISTER", "any");
 define("DEFAULT_ROLE", "member");
 define("SECURE", FALSE);    // For development purposes only!!!!
@@ -21,7 +21,7 @@ define("RecordsPerPage",100);
 define("LocationMaxLength","4");
 define("AssetPicture","asset");
 define('LINE_API',"https://notify-api.line.me/api/notify");
-define('Token',"MPGUzwdmjjwrAHlaDO023IYoceZWZAlzv9FUQkbRRsP"); 
+define('Token',"S26HGvLDqBp51kvfzA9wQ9h8kXNCWtiECkvwd5jYMVe"); 
 //define("PathStaffPicture","file:///P:/");  
 //define("PathAssetPicture","/var/www/harrowassets/assetimages/full/"); 
 ?>

@@ -112,7 +112,7 @@ $TolCount=0;
 $TolQty=0;
 $TolVariance=0;
 // $sql = "SELECT QRCode,StoreNumber,Count,Qty,Variance FROM `ioh` Order By QRCode";
-$sql = "SELECT tb_productdetail.BU_BuildingID,tb_productdetail.DM_DepartmantID,tb_productdetail.FL_FloorID,tb_productdetail.PR_RoomID,ioh.QRCode, ioh.Description, ioh.Count,ioh.Qty,ioh.Variance,ioh.Status_Count,ioh.Reason FROM tb_productdetail RIGHT JOIN ioh ON tb_productdetail.PR_ID = ioh.Counted_ID Where ioh.Variance<>0 ORDER BY ioh.Description;";
+$sql = "SELECT tb_productdetail.BU_BuildingID,tb_productdetail.DM_DepartmentID,tb_productdetail.FL_FloorID,tb_productdetail.PR_RoomID,ioh.QRCode, ioh.Description, ioh.Count,ioh.Qty,ioh.Variance,ioh.Status_Count,ioh.Reason FROM tb_productdetail RIGHT JOIN ioh ON tb_productdetail.PR_ID = ioh.Counted_ID Where ioh.Variance<>0 ORDER BY ioh.Description;";
 
 if ($stmt = $mysqli_asset->prepare($sql)) {
 //            $stmt->bind_param('s', $StaffID);

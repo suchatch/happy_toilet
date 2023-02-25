@@ -55,6 +55,20 @@ if (login_check() == true) {
                                                     <input name="FL_FloorID" class="form-control"  placeholder="ชื่อห้อง" value="1" required>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label>แผนก</label>
+                                                    <select name="DM_DepartmentID" class="form-control" required>
+                                                         <option value="">กรุณาเลือกแผนก</option>
+                                                        <?php
+                                                       $sqlS = "SELECT DM_DepartmentID,DM_DepartmentName FROM `tb_department`";
+                                                        $rs = $mysqli_asset->query($sqlS);
+                                                        while ($row = $rs->fetch_array()) {
+                                                            ?>
+                                                      
+                                                        <option value="<?= $row['DM_DepartmentID']; ?>"><?= $row['DM_DepartmentName']; ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
                                                     <label>เพศห้อง</label>
                                                     <select name="RM_RoomSex" class="form-control" required>
                                                         <option value="">-</option>

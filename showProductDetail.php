@@ -6,7 +6,7 @@ include_once './clsProductDetail.php';
 $response = array();
 
 $sql = "SELECT `PR_ID`, `PM_ProductMasterID`, `PR_Barcode`, `PR_SerialNumber`, "
-        . "`BR_BranchCode`, `PR_IMEI`, `BU_BuildingID`, `DM_DepartmantID`, `FL_FloorID`, "
+        . "`BR_BranchCode`, `PR_IMEI`, `BU_BuildingID`, `DM_DepartmentID`, `FL_FloorID`, "
         . "`PR_RoomID`, `DM_DamageID`, `PR_CustodianEmpID`, `PC_PurchaseID`, `SP_SupplierID`, `PR_Qty`, "
         . "`PR_SeqStart`, `PR_SeqEnd`, `PR_StaffCreate`, `PR_CreateDate`, `PR_StaffEdit`, `PR_EditDate`, `PR_Remark`"
         . " FROM `tb_productdetail`";
@@ -22,7 +22,7 @@ if ($stmt = $mysqli_asset->prepare($sql)) {
             $BR_BranchCode,
             $PR_IMEI,
             $BU_BuildingID,
-            $DM_DepartmantID,
+            $DM_DepartmentID,
             $FL_FloorID,
             $PR_RoomID,
             $DM_DamageID,
@@ -47,7 +47,7 @@ while ($stmt->fetch()) {
     $pd->BR_BranchCode = $BR_BranchCode;
     $pd->PR_IMEI = $PR_IMEI;
     $pd->BU_BuildingID = $BU_BuildingID;
-    $pd->DM_DepartmantID = $DM_DepartmantID;
+    $pd->DM_DepartmentID = $DM_DepartmentID;
     $pd->FL_FloorID = $FL_FloorID;
     $pd->PR_RoomID = $PR_RoomID;
     $pd->DM_DamageID = $DM_DamageID;

@@ -67,12 +67,12 @@ sec_session_start();
                                         <tbody>
                                             <?php
                                        
-                                            $sql = "SELECT `tb_product_lookup_table`.`PL_Barcode`, `tb_product_lookup_table`.`PL_Description`, tb_productdetail.PR_SerialNumber, tb_productdetail.PR_IMEI,PR_CustodianEmpID, tb_productdetail.BR_BranchCode, tb_productdetail.BU_BuildingID, tb_productdetail.DM_DepartmantID, tb_productdetail.FL_FloorID, tb_productdetail.PR_RoomID, tb_productdetail.DM_DamageID, tb_productdetail.PC_PurchaseID, tb_productdetail.PR_Qty, tb_productdetail.PR_CreateDate
+                                            $sql = "SELECT `tb_product_lookup_table`.`PL_Barcode`, `tb_product_lookup_table`.`PL_Description`, tb_productdetail.PR_SerialNumber, tb_productdetail.PR_IMEI,PR_CustodianEmpID, tb_productdetail.BR_BranchCode, tb_productdetail.BU_BuildingID, tb_productdetail.DM_DepartmentID, tb_productdetail.FL_FloorID, tb_productdetail.PR_RoomID, tb_productdetail.DM_DamageID, tb_productdetail.PC_PurchaseID, tb_productdetail.PR_Qty, tb_productdetail.PR_CreateDate
 FROM tb_productdetail RIGHT JOIN tb_product_lookup_table ON tb_productdetail.PR_Barcode = tb_product_lookup_table.PL_Barcode Order By tb_productdetail.PR_Barcode;
 ";
                                             if ($stmt = $mysqli_asset->prepare($sql)) {
                                                 $stmt->execute();
-                                                $stmt->bind_result($PR_Barcode,$PL_Description,$PR_SerialNumber,$PR_IMEI,$PR_CustodianEmpID,$BR_BranchCode,$BU_BuildingID,$DM_DepartmantID,$FL_FloorID,$PR_RoomID,$DM_DamageID,$Status,$PR_Qty,$PR_CreateDate);
+                                                $stmt->bind_result($PR_Barcode,$PL_Description,$PR_SerialNumber,$PR_IMEI,$PR_CustodianEmpID,$BR_BranchCode,$BU_BuildingID,$DM_DepartmentID,$FL_FloorID,$PR_RoomID,$DM_DamageID,$Status,$PR_Qty,$PR_CreateDate);
                                             }
 
 
@@ -87,7 +87,7 @@ FROM tb_productdetail RIGHT JOIN tb_product_lookup_table ON tb_productdetail.PR_
                                                     <td><?=$PL_Description;?></td>
                                                     <td><?=$PR_CustodianEmpID;?></td>
                                                     <td><?=$BU_BuildingID;?></td>
-                                                    <td><?=$DM_DepartmantID;?></td>
+                                                    <td><?=$DM_DepartmentID;?></td>
                                                     <td><?=$FL_FloorID;?></td>
                                                     <td><?=$PR_RoomID;?></td>
                                                     <td><?=$DM_DamageID;?></td>

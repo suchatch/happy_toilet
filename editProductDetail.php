@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $PR_High = $_POST['PR_High'];
     $BR_BranchCode = $_POST['BR_BranchCode'];
     $BU_BuildingID = $_POST['BU_BuildingID'];
-    $DM_DepartmantID = $_POST['DM_DepartmantID'];
+    $DM_DepartmentID = $_POST['DM_DepartmentID'];
     $FL_FloorID = $_POST['FL_FloorID'];
     $PR_RoomID = $_POST['PR_RoomID'];
     $DM_DamageID = $_POST['DM_DamageID'];
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $PR_Remark = $_POST['PR_Remark'];
 
     $sql = "UPDATE `tb_productdetail` SET `PM_ProductMasterID`= ? ,`PR_SerialNumber`=?,`PR_IMEI` = ?,PR_Width = ?,PR_Long=?,PR_High=?,"
-            . "BR_BranchCode=?,BU_BuildingID=?,DM_DepartmantID=?,FL_FloorID=?,PR_RoomID=?,DM_DamageID=?,PR_CustodianEmpID=?,PC_PurchaseID=?,SP_SupplierID=?,PR_Remark=?,"
+            . "BR_BranchCode=?,BU_BuildingID=?,DM_DepartmentID=?,FL_FloorID=?,PR_RoomID=?,DM_DamageID=?,PR_CustodianEmpID=?,PC_PurchaseID=?,SP_SupplierID=?,PR_Remark=?,"
             . "`PR_StaffEdit` = '0001877', `PR_EditDate` = now()  WHERE PR_Barcode = ? ;";
     
     if ($stmt = $mysqli_asset->prepare($sql)) {
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $PR_High,
                 $BR_BranchCode,
                 $BU_BuildingID,
-                $DM_DepartmantID,
+                $DM_DepartmentID,
                 $FL_FloorID,
                 $PR_RoomID,
                 $DM_DamageID,

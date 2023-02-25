@@ -12,7 +12,7 @@ class clsProductDetail {
     public $PR_Long = "";
     public $PR_High = "";
     public $BU_BuildingID = "";
-    public $DM_DepartmantID = "";
+    public $DM_DepartmentID = "";
     public $FL_FloorID = "";
     public $PR_RoomID = "";
     public $DM_DamageID = "";

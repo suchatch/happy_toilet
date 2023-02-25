@@ -9,7 +9,7 @@ $sql = "SELECT tb_room.RM_RoomID, (select count(*) from tb_vote_result Where tb_
 if ($stmt = $mysqli_asset->prepare($sql)) {
 //    $stmt->bind_param('s', $ReferenceQID);
     $stmt->execute();
-    $stmt->bind_result($Vote);
+    $stmt->bind_result($RM_RoomID,$Vote);
     $stmt->execute();
     $result = $stmt->get_result();
   

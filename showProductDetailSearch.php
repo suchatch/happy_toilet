@@ -9,7 +9,7 @@ $response = array();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $PR_Barcode = $_POST['PR_Barcode'];
 
-    $sql = "SELECT `PM_ProductMasterID`,`PR_SerialNumber`,`PR_IMEI`,`PR_Width`,`PR_Long`,`PR_High`,`BR_BranchCode`,`BU_BuildingID`,`DM_DepartmantID`,`FL_FloorID`,`PR_RoomID`, "
+    $sql = "SELECT `PM_ProductMasterID`,`PR_SerialNumber`,`PR_IMEI`,`PR_Width`,`PR_Long`,`PR_High`,`BR_BranchCode`,`BU_BuildingID`,`DM_DepartmentID`,`FL_FloorID`,`PR_RoomID`, "
             . " `DM_DamageID`,`PR_CustodianEmpID`,`PC_PurchaseID`,`SP_SupplierID`,`PR_Remark`"
             . " FROM `tb_productdetail` "
             . " WHERE PR_Barcode = ?";
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param('s', $PR_Barcode);
         $stmt->execute();
         $stmt->bind_result($PM_ProductMasterID,$PR_SerialNumber,$PR_IMEI,$PR_Width,$PR_Long,$PR_High,$BR_BranchCode,
-                $BU_BuildingID,$DM_DepartmantID,$FL_FloorID,$PR_RoomID,
+                $BU_BuildingID,$DM_DepartmentID,$FL_FloorID,$PR_RoomID,
                 $DM_DamageID,$PR_CustodianEmpID,$PC_PurchaseID,$SP_SupplierID,$PR_Remark);
     }
     while ($stmt->fetch()) {
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pd->PR_High = $PR_High;
         $pd->BR_BranchCode = $BR_BranchCode;
         $pd->BU_BuildingID = $BU_BuildingID;
-        $pd->DM_DepartmantID = $DM_DepartmantID;
+        $pd->DM_DepartmentID = $DM_DepartmentID;
         $pd->FL_FloorID = $FL_FloorID;
         $pd->PR_RoomID = $PR_RoomID;
         $pd->DM_DamageID = $DM_DamageID;

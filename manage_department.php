@@ -4,11 +4,12 @@ include_once './functions.php';
 sec_session_start();
 if (login_check() == true) {
 ?>
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
     <?php
     include_once './structure_head.php';
     ?>
+
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
 
@@ -37,76 +38,48 @@ if (login_check() == true) {
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Edit Room</h3>
+                                    <h3 class="box-title">Department/Zone</h3>
+
                                 </div>
+
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <?php
-                                    $sql = "SELECT RM_RoomID,RM_RoomName,DM_DepartmentID,RM_RoomSex,ST_StaffID FROM `tb_room` WHERE RM_RoomID = ?";
-                                    if ($stmt = $mysqli_asset->prepare($sql)) {
-                                        $stmt->bind_param('i', $_GET['RM_RoomID']);
-                                        $stmt->execute();
-                                        $stmt->store_result();
-                                        $stmt->bind_result($RM_RoomID, $RM_RoomName,$DM_DepartmentID,$RM_RoomSex, $ST_StaffID);
-                                        $stmt->fetch();
-                                    }
-                                        ?>
-                                        <!-- form start -->
-                                        <form action="process_room_edit.php" method="post" role="form">
-                                            <div class="box-body">
-                                                <input hidden name="RM_RoomID" type="text" value="<?=$RM_RoomID;?>" required/>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">ชื่อห้อง</label>
-                                                    <input name="RM_RoomName" class="form-control"  placeholder="ชื่อห้อง" value="<?=$RM_RoomName;?>">
-                                                </div>
-                                                 <div class="form-group">
-                                                    <label>เพศห้อง</label>
-                                                    <select name="RM_RoomSex" class="form-control" required>
-                                                        <option value="">-</option>
-                                                        <option  <?=iif("M"==$RM_RoomSex,"Selected","");?> value="M">ชาย</option>
-                                                        <option  <?=iif("W"==$RM_RoomSex,"Selected","");?> value="W">หญิง</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>แผนก</label>
-                                                    <select name="DM_DepartmentID" class="form-control" required>
-                                                        <option value="">กรุณาเลือกแผนก</option>
-                                                        <?php
-                                                        $sqlS = "SELECT DM_DepartmentID,DM_DepartmentName FROM `tb_department`";
-                                                        $rs = $mysqli_asset->query($sqlS);
-                                                        while ($row = $rs->fetch_array()) {
-                                                            ?>
-                                                      
-                                                        <option   <?=iif($row['DM_DepartmentID']==$DM_DepartmentID,"Selected","");?>  value="<?= $row['DM_DepartmentID']; ?>"><?= $row['DM_DepartmentName']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>พนักงานผู้ดูแลห้อง</label>
-                                                    <select name="ST_StaffID" class="form-control" required>
-                                                        <option value="">กรุณาเลือกพนักงานผู้ดูแลห้อง</option>
-                                                        <?php
-                                                        $sqlS = "SELECT ST_StaffID,ST_StaffName FROM `tb_staff`";
-                                                        $rs = $mysqli_asset->query($sqlS);
-                                                        while ($row = $rs->fetch_array()) {
-                                                            ?>
-                                                      
-                                                        <option   <?=iif($row['ST_StaffID']==$ST_StaffID,"Selected","");?>  value="<?= $row['ST_StaffID']; ?>"><?= $row['ST_StaffID'] . ' ' . $row['ST_StaffName']; ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>แผนก/โซน</th>
+                                                <th> <a href="manage_department_add.php"><span class="label label-success">เพิ่มแผนก</span></a></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $sql = "SELECT DM_DepartmentID,DM_DepartmentName FROM `tb_department` Order by DM_DepartmentName";
+                                            if ($stmt = $mysqli_asset->prepare($sql)) {
+                                                //            $stmt->bind_param('s', $StaffID);
+                                                $stmt->execute();
+                                                $stmt->bind_result($DM_DepartmentID, $DM_DepartmentName);
+                                            }
 
 
-                                            </div>
-                                            <!-- /.box-body -->
+                                            while ($stmt->fetch()) {
+                                            ?>
+                                                <tr>
 
-                                            <div class="box-footer">
-                                                 <button type="submit" class="btn btn-primary">บันทึก</button>
-                                                
-                                                 <button type="button" onclick="window.location.href='manage_room.php';"  class="btn btn-warning">ย้อนกลับ</button>
-                                            </div>
-                                        </form>
-                               
+
+                                                    <td><?= $DM_DepartmentName; ?></td>
+                                                    <td><a href="manage_department_edit.php?DM_DepartmentID=<?= $DM_DepartmentID; ?>"><span class="label label-warning">แก้ไข</span></a> </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>แผนก/โซน</th>
+                                                <th>แก้ไข</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
@@ -339,7 +312,7 @@ if (login_check() == true) {
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-            $(function () {
+            $(function() {
                 $('#example1').DataTable()
                 $('#example2').DataTable({
                     'paging': true,
@@ -352,11 +325,14 @@ if (login_check() == true) {
             })
         </script>
     </body>
-</html>
-<?php 
-}else {
-    ?>
-    <script>window.location.href = 'login.php';</script>
-    <?php
+
+    </html>
+<?php
+} else {
+?>
+    <script>
+        window.location.href = 'login.php';
+    </script>
+<?php
 }
 ?>

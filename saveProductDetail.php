@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $PR_Long = $_POST['PR_Long'];
     $PR_High = $_POST['PR_High'];
     $BU_BuildingID = $_POST['BU_BuildingID'];
-    $DM_DepartmantID = $_POST['DM_DepartmantID'];
+    $DM_DepartmentID = $_POST['DM_DepartmentID'];
     $FL_FloorID = $_POST['FL_FloorID'];
     $PR_RoomID = $_POST['PR_RoomID'];
     $DM_DamageID = $_POST['DM_DamageID'];
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $PR_Remark = $_POST['PR_Remark'];
 
     $sql = "INSERT INTO `tb_productdetail` (`PM_ProductMasterID`, `PR_Barcode`,  `PR_SerialNumber`, `BR_BranchCode`, "
-            . "`PR_IMEI`,`PR_Width`,`PR_Long`,`PR_High`, `BU_BuildingID`, `DM_DepartmantID`, `FL_FloorID`, `PR_RoomID`, `DM_DamageID`, `PR_CustodianEmpID`, "
+            . "`PR_IMEI`,`PR_Width`,`PR_Long`,`PR_High`, `BU_BuildingID`, `DM_DepartmentID`, `FL_FloorID`, `PR_RoomID`, `DM_DamageID`, `PR_CustodianEmpID`, "
             . "`PC_PurchaseID`, `SP_SupplierID`, `PR_Qty`,`PR_Remark`) "
             . "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $PR_Long,
                 $PR_High,
                 $BU_BuildingID,
-                $DM_DepartmantID,
+                $DM_DepartmentID,
                 $FL_FloorID,
                 $PR_RoomID,
                 $DM_DamageID,
