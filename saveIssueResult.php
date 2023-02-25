@@ -21,18 +21,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //    } 
     //getting the name from request 
     $IS_IssueID = $_POST['IS_IssueID'];
-    $SB_SubjectVoltID = $_POST['SB_SubjectVoltID'];
-    $VD_VoltID = $_POST['VD_VoltID'];
+    $SB_SubjectVoteID = $_POST['SB_SubjectVoteID'];
+    $VD_VoteID = $_POST['VD_VoteID'];
     $RM_RoomID = $_POST['RM_RoomID'];
     $ST_StaffID = $_POST['ST_StaffID'];
 
     $RM_RoomName = "";
-    $VD_VoltName = "";
-    $sql = "INSERT INTO `tb_issue_result` (`IS_IssueID`,`SB_SubjectVoltID`, `VD_VoltID`,  `RM_RoomID`, `ST_StaffID`) "
+    $VD_VoteName = "";
+    $sql = "INSERT INTO `tb_issue_result` (`IS_IssueID`,`SB_SubjectVoteID`, `VD_VoteID`,  `RM_RoomID`, `ST_StaffID`) "
             . "VALUES (?, ?, ?, ?, ?);";
 
     if ($stmt = $mysqli_asset->prepare($sql)) {
-        $stmt->bind_param('iiiis', $IS_IssueID, $SB_SubjectVoltID, $VD_VoltID, $RM_RoomID, $ST_StaffID);
+        $stmt->bind_param('iiiis', $IS_IssueID, $SB_SubjectVoteID, $VD_VoteID, $RM_RoomID, $ST_StaffID);
         //if data inserts successfully
         if ($stmt->execute()) {
             //making success response 
@@ -48,10 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $RM_RoomName = $rowR['RM_RoomName'];
             }
             // Get Room Info
-            $sqlV = "select `VD_VoltName` from `tb_volt` where `VD_VoltID` = " .$VD_VoltID;
+            $sqlV = "select `VD_VoteName` from `tb_vote` where `VD_VoteID` = " .$VD_VoteID;
             $rsV = $mysqli_asset->query($sqlV);
             while ($rowV = $rsV->fetch_array()) {
-                $VD_VoltName = $rowV['VD_VoltName'];
+                $VD_VoteName = $rowV['VD_VoteName'];
             }
             
             // Get Issue Info
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
 //            $str = "วันเวลา:" .(new \DateTime())->format('d/m/Y H:i')."\r\n";
 //            $str .= "พื้นที่:" . $RM_RoomName ."\r\n";
-//            $str .= "ให้คะแนน:" . $VD_VoltName."\r\n";
+//            $str .= "ให้คะแนน:" . $VD_VoteName."\r\n";
 //            $str .= "เหตุผล:". $IS_IssueName."\r\n";
 //            $res = notify_message($str, Token);
         } else {

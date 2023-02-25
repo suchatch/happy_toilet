@@ -21,19 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //    } 
 
     //getting the name from request 
-    $SB_SubjectVoltID = $_POST['SB_SubjectVoltID'];
-    $VD_VoltID = $_POST['VD_VoltID'];
+    $SB_SubjectVoteID = $_POST['SB_SubjectVoteID'];
+    $VD_VoteID = $_POST['VD_VoteID'];
     $RM_RoomID = $_POST['RM_RoomID'];
     $ST_StaffID = $_POST['ST_StaffID'];
    
 
-    $sql = "INSERT INTO `tb_vote_result` (`SB_SubjectVoltID`, `VD_VoltID`,  `RM_RoomID`, `ST_StaffID`) "
+    $sql = "INSERT INTO `tb_vote_result` (`SB_SubjectVoteID`, `VD_VoteID`,  `RM_RoomID`, `ST_StaffID`) "
             . "VALUES (?, ?, ?, ?);";
     
     if ($stmt = $mysqli_asset->prepare($sql)) {
         $stmt->bind_param('iiis', 
-                $SB_SubjectVoltID, 
-                $VD_VoltID,
+                $SB_SubjectVoteID, 
+                $VD_VoteID,
                 $RM_RoomID,
                 $ST_StaffID);
         //if data inserts successfully

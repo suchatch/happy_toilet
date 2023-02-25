@@ -4,7 +4,7 @@ class clsIssue {
     public $IS_IssueID = "";
     public $IS_IssueName = "";
     public $IS_IssueNameEN = "";
-    public $SB_SubjectVoltID = "";
+    public $SB_SubjectVoteID = "";
     public $IS_Picture = "";
     
 }

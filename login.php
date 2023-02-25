@@ -11,7 +11,7 @@ sec_session_start();
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <b>PCS</b>IAS
+                <b>Happy</b>Toilet
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">

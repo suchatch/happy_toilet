@@ -22,16 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //getting the name from request 
     $NF_NotifyFixID = $_POST['NF_NotifyFixID'];
     $IS_IssueID = $_POST['IS_IssueID'];
-    $SB_SubjectVoltID = $_POST['SB_SubjectVoltID'];
-    $VD_VoltID = $_POST['VD_VoltID'];
+    $SB_SubjectVoteID = $_POST['SB_SubjectVoteID'];
+    $VD_VoteID = $_POST['VD_VoteID'];
     $RM_RoomID = $_POST['RM_RoomID'];
     $ST_StaffID = $_POST['ST_StaffID'];
 
-    $sql = "INSERT INTO `tb_notify_fix_result` (`NF_NotifyFixID`,`IS_IssueID`,`SB_SubjectVoltID`, `VD_VoltID`,  `RM_RoomID`, `ST_StaffID`) "
+    $sql = "INSERT INTO `tb_notify_fix_result` (`NF_NotifyFixID`,`IS_IssueID`,`SB_SubjectVoteID`, `VD_VoteID`,  `RM_RoomID`, `ST_StaffID`) "
             . "VALUES (?, ?, ?, ?, ?, ?);";
 
     if ($stmt = $mysqli_asset->prepare($sql)) {
-        $stmt->bind_param('iiiiis', $NF_NotifyFixID, $IS_IssueID, $SB_SubjectVoltID, $VD_VoltID, $RM_RoomID, $ST_StaffID);
+        $stmt->bind_param('iiiiis', $NF_NotifyFixID, $IS_IssueID, $SB_SubjectVoteID, $VD_VoteID, $RM_RoomID, $ST_StaffID);
         //if data inserts successfully
         if ($stmt->execute()) {
             //making success response 

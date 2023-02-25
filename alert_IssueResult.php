@@ -22,15 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //getting the name from request 
 
     $IS_IssueID = $_POST['IS_IssueID'];
-    $SB_SubjectVoltID = $_POST['SB_SubjectVoltID'];
-    $VD_VoltID = $_POST['VD_VoltID'];
+    $SB_SubjectVoteID = $_POST['SB_SubjectVoteID'];
+    $VD_VoteID = $_POST['VD_VoteID'];
     $RM_RoomID = $_POST['RM_RoomID'];
     $ST_StaffID = $_POST['ST_StaffID'];
     $NF_NotifyFixName = "";
     $DM_DepartmentID = 0;
     $DM_DepartmentName = "AA";
     $RM_RoomName = "";
-    $VD_VoltName = "";
+    $VD_VoteName = "";
     $IS_IssueName = "";
     $ST_StaffName = "";
     
@@ -60,10 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     // Get Vote Info
-    $sqlV = "select `VD_VoltName` from `tb_volt` where `VD_VoltID` = " . $VD_VoltID;
+    $sqlV = "select `VD_VoteName` from `tb_vote` where `VD_VoteID` = " . $VD_VoteID;
     $rsV = $mysqli_asset->query($sqlV);
     while ($rowV = $rsV->fetch_array()) {
-        $VD_VoltName = $rowV['VD_VoltName'];
+        $VD_VoteName = $rowV['VD_VoteName'];
     }
     
 
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $str .= "พื้นที่ : " . $DM_DepartmentName . "\r\n";
     $str .= "ห้อง : " . $RM_RoomName . "\r\n";
     $str .= "ผู้ดูแล : `" . $ST_StaffName . "`\r\n";
-    $str .= "ให้คะแนน : " . $VD_VoltName . "\r\n";
+    $str .= "ให้คะแนน : " . $VD_VoteName . "\r\n";
     $str .= "เหตุผล \r\n" . $IS_IssueName . "\r\n";
     $res = notify_message($str, Token);
 } else {

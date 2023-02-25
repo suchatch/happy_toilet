@@ -186,25 +186,25 @@ sec_session_start();
                                 $Vote2 = 0;
                                 $Vote3 = 0;
                                 $Vote4 = 0;
-                               $sqlV = "SELECT `tb_volt`.`VD_VoltID`,`tb_volt`.`VD_VoltName`,count(*) as Vote FROM `tb_vote_result` LEFT JOIN `tb_volt` ON `tb_vote_result`.`VD_VoltID` = `tb_volt`.`VD_VoltID` WHERE `tb_vote_result`.`RM_RoomID` = " . $rowR['RM_RoomID'] . " AND `tb_vote_result`.`VR_CreateDate` BETWEEN '$dtStart 00:00:00' AND '$dtEnd 23:59:59'   Group By `tb_volt`.`VD_VoltID`";
+                               $sqlV = "SELECT `tb_vote`.`VD_VoteID`,`tb_vote`.`VD_VoteName`,count(*) as Vote FROM `tb_vote_result` LEFT JOIN `tb_vote` ON `tb_vote_result`.`VD_VoteID` = `tb_vote`.`VD_VoteID` WHERE `tb_vote_result`.`RM_RoomID` = " . $rowR['RM_RoomID'] . " AND `tb_vote_result`.`VR_CreateDate` BETWEEN '$dtStart 00:00:00' AND '$dtEnd 23:59:59'   Group By `tb_vote`.`VD_VoteID`";
 
                                 $rsV = $mysqli_asset->query($sqlV);
                                 while ($rowV = $rsV->fetch_array()) {
-                                    switch ($rowV['VD_VoltID']) {
+                                    switch ($rowV['VD_VoteID']) {
                                         case 1:
-//                                    $VoteName1 = $row['VD_VoltName'];
+//                                    $VoteName1 = $row['VD_VoteName'];
                                             $Vote1 = $rowV['Vote'];
                                             break;
                                         case 2:
-//                                    $VoteName2 = $row['VD_VoltName'];
+//                                    $VoteName2 = $row['VD_VoteName'];
                                             $Vote2 = $rowV['Vote'];
                                             break;
                                         case 3:
-//                                    $VoteName3 = $row['VD_VoltName'];
+//                                    $VoteName3 = $row['VD_VoteName'];
                                             $Vote3 = $rowV['Vote'];
                                             break;
                                         case 4:
-//                                    $VoteName4 = $row['VD_VoltName'];
+//                                    $VoteName4 = $row['VD_VoteName'];
                                             $Vote4 = $rowV['Vote'];
                                             break;
                                         default:

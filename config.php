@@ -21,7 +21,8 @@ define("RecordsPerPage",100);
 define("LocationMaxLength","4");
 define("AssetPicture","asset");
 define('LINE_API',"https://notify-api.line.me/api/notify");
-define('Token',"S26HGvLDqBp51kvfzA9wQ9h8kXNCWtiECkvwd5jYMVe"); 
+define('Token',"126HGvLDqBp51kvfzA9wQ9h8kXNCWtiECkvwd5jYMVe");      // TEST
+// define('Token',"S26HGvLDqBp51kvfzA9wQ9h8kXNCWtiECkvwd5jYMVe");   // Production
 //define("PathStaffPicture","file:///P:/");  
 //define("PathAssetPicture","/var/www/harrowassets/assetimages/full/"); 
 ?>

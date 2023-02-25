@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 $dtStart = date('Y-m-d', strtotime($_GET['dtStart']));
 $dtEnd = date('Y-m-d', strtotime($_GET['dtEnd']));
 $sql = "SELECT tb_room.RM_RoomID, (select count(*) from tb_issue_result Where tb_issue_result.RM_RoomID = tb_room.RM_RoomID and `tb_issue_result`.`IS_IssueID` = 2 and `tb_issue_result`.`SR_CreateDate` BETWEEN '$dtStart 00:00:00' AND '$dtEnd 23:59:59') as Issue FROM tb_room";
-//$sql = "SELECT count(*) as Vote FROM `tb_vote_result` LEFT JOIN `tb_volt` ON `tb_vote_result`.`VD_VoltID` = `tb_volt`.`VD_VoltID` where `tb_volt`.`VD_VoltID` = 1  Group By `tb_volt`.`VD_VoltID` ,`tb_vote_result`.`RM_RoomID`";
+//$sql = "SELECT count(*) as Vote FROM `tb_vote_result` LEFT JOIN `tb_vote` ON `tb_vote_result`.`VD_VoteID` = `tb_vote`.`VD_VoteID` where `tb_vote`.`VD_VoteID` = 1  Group By `tb_vote`.`VD_VoteID` ,`tb_vote_result`.`RM_RoomID`";
 if ($stmt = $mysqli_asset->prepare($sql)) {
 //    $stmt->bind_param('s', $ReferenceQID);
     $stmt->execute();
