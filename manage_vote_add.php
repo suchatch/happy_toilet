@@ -38,56 +38,58 @@ if (login_check() == true) {
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Vote</h3>
-
+                                    <h3 class="box-title">Add Vote</h3>
                                 </div>
-
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>รูปประกอบ</th>
-                                                <th>ชื่อVote TH</th>
-                                                <th>ชื่อVote EN</th>
-                                                <th>หัวข้อเรื่อง</th>
 
-                                                <th> <a href="manage_vote_add.php"><span class="label label-success">เพิ่มห้อง</span></a></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $sql = "SELECT tb_vote.VD_VoteID,tb_vote.VD_VoteName,tb_vote.VD_VoteNameEN,tb_vote.VD_Picture,tb_subjectvote.SB_SubjectVoteName FROM tb_vote inner join tb_subjectvote on tb_vote.SB_SubjectVoteID = tb_subjectvote.SB_SubjectVoteID";
-                                            if ($stmt = $mysqli_asset->prepare($sql)) {
-                                                //            $stmt->bind_param('s', $StaffID);
-                                                $stmt->execute();
-                                                $stmt->bind_result($VD_VoteID, $VD_VoteName, $VD_VoteNameEN, $VD_Picture, $SB_SubjectVoteName);
-                                            }
+                                    <!-- form start -->
+                                    <form action="process_vote_add.php" method="post" role="form" enctype="multipart/form-data">
+                                        <div class="box-body">
+                                            <input hidden name="VD_VoteID" type="text" value="" />
+                                            <div class="form-group">
+                                                <label>ชื่อVote TH</label>
+                                                <input name="VD_VoteName" class="form-control" placeholder="ชื่อVote TH" value="" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>ชื่อVote TH</label>
+                                                <input name="VD_VoteNameEN" class="form-control" placeholder="ชื่อVote EN" value="" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>หัวข้อเรื่อง</label>
+                                                <select name="SB_SubjectVoteID" class="form-control" required>
+                                                    <option value="">กรุณาเลือกหัวข้อเรื่อง</option>
+                                                    <?php
+                                                    $sqlS = "SELECT SB_SubjectVoteID,SB_SubjectVoteName FROM `tb_subjectvote`";
+                                                    $rs = $mysqli_asset->query($sqlS);
+                                                    while ($row = $rs->fetch_array()) {
+                                                    ?>
+                                                        <option value="<?= $row['SB_SubjectVoteID']; ?>"><?= $row['SB_SubjectVoteName']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">รูปภาพ</label>
+                                                <input name="upload_file" type="file" id="exampleInputFile" required>
+                                            </div>
 
 
-                                            while ($stmt->fetch()) {
-                                            ?>
-                                                <tr>
-                                                    <td width="150px"><img src="dist/img/<?= AssetPicture; ?>/isuzu/<?= $VD_Picture; ?>" width="100px" alt="User Image"></td>
-                                                    <td>aa<?= $VD_VoteName; ?></td>
-                                                    <td><?= $VD_VoteNameEN; ?></td>
-                                                    <td><?= $SB_SubjectVoteName; ?> </td>
-                                                    <td><a href="manage_vote_edit.php?VD_VoteID=<?= $VD_VoteID; ?>"><span class="label label-warning">แก้ไข</span></a> </td>
-                                                </tr>
-                                            <?php
-                                            }
-                                            ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>รูปประกอบ</th>
-                                                <th>ชื่อVote TH</th>
-                                                <th>ชื่อVote EN</th>
-                                                <th>หัวข้อเรื่อง</th>
-                                                <th></th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                                            <div class="form-group">
+                                                <div id="alertMessage"></div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary">บันทึก</button>
+
+                                            <button type="button" onclick="window.location.href='manage_Vote.php';" class="btn btn-warning">ย้อนกลับ</button>
+                                        </div>
+                                    </form>
+
                                 </div>
                                 <!-- /.box-body -->
                             </div>

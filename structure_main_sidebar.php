@@ -56,7 +56,7 @@
                     <li><a href="manage_department.php"><i class="fa fa-circle-o"></i> Manage Department</a></li>
                     <li><a href="manage_staff.php"><i class="fa fa-circle-o"></i> Manage Staff</a></li>
                     <li><a href="manage_room.php"><i class="fa fa-circle-o"></i> Manage Room</a></li>
-                    
+                    <li><a href="manage_vote.php"><i class="fa fa-circle-o"></i> Manage Vote</a></li>
                 </ul>
             </li>
         </ul>
